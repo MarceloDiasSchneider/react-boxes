@@ -1,14 +1,15 @@
-import { useState } from "react";
-
 function Box(props) {
-  const [on, setOn] = useState(props.on);
   const styles = {
-    backgroundColor: on ? "#222222" : "#cccccc",
+    backgroundColor: props.square.on ? "#222222" : "#cccccc",
   };
-  function toogleOn() {
-    setOn((prevOn) => !prevOn);
-  }
-  return <div className="box" style={styles} onClick={toogleOn}></div>;
+
+  return (
+    <div
+      className="box"
+      style={styles}
+      onClick={() => props.toggle()}
+    ></div>
+  );
 }
 
 export default Box;

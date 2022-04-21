@@ -6,8 +6,17 @@ function App(props) {
   const [squares, setSquares] = useState(data);
 
   const squareElements = squares.map((square) => (
-    <Box on={square.on} key={square.id} />
+    <Box square={square} key={square.id} toggle={() => toggle(square.id)} />
   ));
+
+  function toggle(id) {
+    setSquares((prevSquares) => {
+      console.log(prevSquares);
+      return prevSquares.map((square) => {
+        return square.id === id ? { ...square, on: !square.on } : square;
+      });
+    });
+  }
 
   return <main>{squareElements}</main>;
 }
